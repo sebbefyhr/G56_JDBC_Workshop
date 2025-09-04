@@ -17,21 +17,13 @@ public class Main {
 
         ResourceBundle rb = ResourceBundle.getBundle("application");
 
-
         try {
 
             Connection conn = DriverManager.getConnection(rb.getString("URL"), rb.getString("USER"), rb.getString("PASSWORD"));
 
             CityDaoImpl cdi = new CityDaoImpl(conn);
 
-            //System.out.println(cdi.save(new City("Bandahar", "afg", "Kabol", 49323)));
-
-
-            System.out.println(cdi.findById(4083).get());
-            cdi.deleteById(4083);
-            System.out.println(cdi.findById(4083).get());
-
-
+            conn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
